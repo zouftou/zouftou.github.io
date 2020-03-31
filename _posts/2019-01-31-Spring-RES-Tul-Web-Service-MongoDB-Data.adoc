@@ -1,0 +1,302 @@
+= Spring RESTful Web Service MongoDB Data
+
+In this tutorial, I show you how to create a RESTful Web Service with http://projects.spring.io/[Spring] Data and https://www.mongodb.org/[MongoDB]
+
+What you’ll need :
+
+<1> MongoDB 2.6.4
+<2> Eclipse IDE
+<3> https://spring.io/guides/gs/sts/[Spring Tool Suite (STS)]
+<4> Maven 3.0+
+<5> JDK 1.8 or later
+
+=== 1. Project Directory
+
+=== 2. pom.xml
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.ayooz</groupId>
+	<artifactId>example</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>spring-rest-service</name>
+	<description>Demo Spring RESTful Web Service MongoDB Data</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.3.1.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+        	<groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+        <!-- for test-->
+        <dependency>
+            <groupId>cz.jirutka.spring</groupId>
+            <artifactId>embedmongo-spring</artifactId>
+            <version>1.3.0</version>
+            <scope>test</scope>
+        </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>
+----
+=== 3. application.properties
+[source,ruby]
+----
+spring.data.mongodb.host=127.0.0.1
+spring.data.mongodb.port=27017
+----
+=== 4. Spring Boot App 
+Main class starter
+[source,java]
+----
+package ma.example;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SpringRestApp {
+    public static void main(String[] args) {
+        SpringApplication.run(SpringRestApp.class, args);
+    }
+}
+----
+=== 5. Config.java and MongoConfig.java
+General configuration file
+[source,java]
+----
+package ma.example.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+
+@Configuration
+@Import( {MongoConfig.class} )
+public class Config {
+    
+}
+----
+Mongo Configuration
+[source,java]
+----
+package ma.example.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.data.mongodb.MongoDbFactory;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import com.mongodb.MongoClient;
+
+@EnableMongoRepositories(basePackages="ma.example.domain.task")
+public class MongoConfig {
+	public @Bean MongoDbFactory mongoDbFactory() throws Exception {
+		return new SimpleMongoDbFactory(new MongoClient(), "taskdb");
+	}
+	public @Bean MongoTemplate mongoTemplate() throws Exception {
+	      return new MongoTemplate(mongoDbFactory());
+	}
+}
+----
+=== 6. Base Entity Model
+This is an abstract entity model for all classes.
+[source,java]
+----
+package ma.example.domain;
+
+import java.io.Serializable;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+/**
+ * Super class for all entity classes.
+ * @author Zouhir OUFTOU
+ * 
+ */
+@Document
+@JsonIgnoreProperties(ignoreUnknown=true)
+@SuppressWarnings("serial")
+public abstract class BaseEntity implements Serializable {
+	//id will be used for storing MongoDB _id
+    @Id
+    private String id;
+    public String getId() {
+        return id;
+    }
+    public void setId(String id) {
+        this.id = id;
+    }
+    @Override
+    public int hashCode() {
+        return (id == null) ? 0 : id.hashCode();
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
+        BaseEntity other = (BaseEntity) obj;
+        if (id == null) return other.id == null;
+        return id.equals(other.id);
+    }
+}
+----
+=== 7. Task Model
+[source,java]
+----
+package ma.example.domain.task;
+
+import ma.example.domain.BaseEntity;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@SuppressWarnings("serial")
+@Document(collection = "tasks")
+public class Task extends BaseEntity{	
+	@Indexed(unique=true)
+	private String taskId;
+	private String name;
+    
+	public Task(String taskId, String name) {
+		super();
+		this.taskId = taskId;
+		this.name = name;
+	}
+	public String getTaskId() {
+		return taskId;
+	}
+	public void setTaskId(String taskId) {
+		this.taskId = taskId;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	@Override
+	public String toString() {
+		return "Task [taskId=" + taskId + ", name=" + name + "]";
+	}
+}
+----
+=== 8. Task Repository
+[source,java]
+----
+package ma.example.domain.task;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+public interface TaskRepository extends MongoRepository<Task, String>{
+	Task findByTaskId(String taskId);
+}
+----
+=== 7. Task REST Controller
+[source,java]
+----
+package ma.example.rest;
+
+import java.util.List;
+import javax.annotation.PostConstruct;
+import ma.example.domain.task.Task;
+import ma.example.domain.task.TaskRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class TaskController {
+	private TaskRepository taskRepo;
+	@Autowired
+	public TaskController(TaskRepository taskRepo) {
+		super();
+		this.setTaskRepo(taskRepo);
+	}
+	@PostConstruct
+	public void initData(){
+		taskRepo.deleteAll();
+		taskRepo.save(new Task("1","task num 1"));
+		taskRepo.save(new Task("2","task num 2"));
+		taskRepo.save(new Task("3","task num 3"));
+	}
+	@RequestMapping("/tasks")
+	public List<Task> getAllTasks(){
+		return taskRepo.findAll();
+	}
+	@RequestMapping(value = "/task/{taskId}")
+	public Task getTask(@PathVariable("taskId") String taskId) {
+    	return taskRepo.findByTaskId(taskId);
+	}
+	public TaskRepository getTaskRepo() {
+		return taskRepo;
+	}
+	public void setTaskRepo(TaskRepository taskRepo) {
+		this.taskRepo = taskRepo;
+	}
+}
+----
+=== 8. Script .bat to run MongoDB 
+1. MongoDB configuration ( create new file (ex: mongo.config) on your server directory as shown here )
+[source,java]
+----
+##store data here
+dbpath=*path_to_mongodb*\data
+
+##all output go here
+logpath=*path_to_mongodb*\log\mongo.log
+
+##log read and write operations
+diaglog=3
+----
+2. Create script.bat on desktop then double-click
+[source,java]
+----
+cd *path_to_mongodb*\server\bin
+mongod -config *path_to_mongodb*\server\mongo.config
+----
+Run project as Spring Boot App
+
+=== Result
+image::https://github.com/zouftou/zouftou.github.io/blob/master/2015/12/08/spring-rest-service-result2.gif?raw=true[ttes,500,450]
+=== End
+
+https://github.com/zouftou/ayooz/tree/master/spring-rest-service[View Code Source on Github]
+
+:hp-tags: Spring
+:hp-image: /covers/cover.png
+:published_at: 2019-01-31
+:hp-tags: HubPress, Blog, Open_Source,
+:hp-alt-title: My English Title

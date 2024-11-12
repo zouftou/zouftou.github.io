@@ -8,7 +8,7 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.122.0">
     <title>Zouhir OUFTOU's Blog</title>
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
     <link href="./styles/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="./styles/blog.css" rel="stylesheet">
@@ -33,7 +33,7 @@
 
         <div class="nav-scroller py-1 mb-3 border-bottom">
             <nav class="nav nav-underline justify-content-between">
-                <a class="nav-item nav-link link-body-emphasis" href="/pages/posts/devops.html">DevOps</a>
+                <a class="nav-item nav-link link-body-emphasis active" href="/pages/posts/devops.html">DevOps</a>
                 <a class="nav-item nav-link link-body-emphasis" href="/pages/posts/dataops.html">DataOps</a>
                 <a class="nav-item nav-link link-body-emphasis" href="/pages/posts/azure.html">Azure</a>
                 <a class="nav-item nav-link link-body-emphasis" href="/pages/posts/kubernetes.html">Kubernetes</a>
@@ -55,166 +55,232 @@
         <div class="row g-5">
             <div class="col-md-8">
                 <article class="blog-post">
-                    <h2 class="display-5 link-body-emphasis mb-1">DevOps methodology</h2>
+                    <h1>DevOps</h1>
                     <p class="blog-post-meta">November 10, 2024 by <a href="#">z.ouftou</a></p>
-
-                    <p>This blog post talks about DevOps methodology,
-                        its benefits and practices as well as continuous integration and continuous deployment.</p>
-                    <hr>
-                    <p>This is some additional paragraph placeholder content. It has been written to fill the available
-                        space and show how a longer snippet of text affects the surrounding content. We'll repeat it
-                        often to keep the demonstration flowing, so be on the lookout for this exact same string of
-                        text.</p>
-                    <h2>Blockquotes</h2>
-                    <p>This is an example blockquote in action:</p>
-                    <blockquote class="blockquote">
-                        <p>Quoted text goes here.</p>
-                    </blockquote>
-                    <p>This is some additional paragraph placeholder content. It has been written to fill the available
-                        space and show how a longer snippet of text affects the surrounding content. We'll repeat it
-                        often to keep the demonstration flowing, so be on the lookout for this exact same string of
-                        text.</p>
-                    <h3>Example lists</h3>
-                    <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the
-                        other highly repetitive body text used throughout. This is an example unordered list:</p>
+                    <h2>What is DevOps ?</h2>
+                    <p>DevOps is the combination of cultural philosophies, practices, and tools that increases
+                        an organization’s ability to deliver applications and services at high velocity.
+                        It aimed at unifying software development (dev) and computer infrastructure management (ops),
+                        including system administration.</p>
+                    <h2>DevOps Stages</h2>
+                    <p>The DevOps lifecyle stretches from the beginning of software development through to delivery,
+                        maintenance, and security.</p>
+                    <p><img src="../../images/devops-stages.png" alt="DevOps Stages" width="100%" height="50%"></p>
+                    <p>The stages of the DevOps lifecycle are:</p>
                     <ul>
-                        <li>First list item</li>
-                        <li>Second list item with a longer description</li>
-                        <li>Third list item to close it out</li>
-                    </ul>
-                    <p>And this is an ordered list:</p>
-                    <ol>
-                        <li>First list item</li>
-                        <li>Second list item with a longer description</li>
-                        <li>Third list item to close it out</li>
-                    </ol>
-                    <p>And this is a definition list:</p>
-                    <dl>
-                        <dt>HyperText Markup Language (HTML)</dt>
-                        <dd>The language used to describe and define the content of a Web page</dd>
-                        <dt>Cascading Style Sheets (CSS)</dt>
-                        <dd>Used to describe the appearance of Web content</dd>
-                        <dt>JavaScript (JS)</dt>
-                        <dd>The programming language used to build advanced Web sites and applications</dd>
-                    </dl>
-                    <h2>Inline HTML elements</h2>
-                    <p>HTML defines a long list of available inline tags, a complete list of which can be found on the
-                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">Mozilla Developer
-                            Network</a>.
-                    </p>
-                    <ul>
-                        <li><strong>To bold text</strong>, use <code
-                                class="language-plaintext highlighter-rouge">&lt;strong&gt;</code>.</li>
-                        <li><em>To italicize text</em>, use <code
-                                class="language-plaintext highlighter-rouge">&lt;em&gt;</code>.</li>
-                        <li>Abbreviations, like <abbr title="HyperText Markup Language">HTML</abbr> should use <code
-                                class="language-plaintext highlighter-rouge">&lt;abbr&gt;</code>, with an optional <code
-                                class="language-plaintext highlighter-rouge">title</code> attribute for the full phrase.
+                        <li><strong>Plan</strong>: Organize the work that needs to be done, prioritize it, and track its
+                            completion.</li>
+                        <li><strong>Create</strong>: Write, design, develop and securely manage code and project data
+                            with your team.</li>
+                        <li><strong>Verify</strong>: Ensure that your code works correctly and adheres to your quality
+                            standards —
+                            ideally with automated testing.</li>
+                        <li><strong>Package</strong>: Package your applications and dependencies, manage containers, and
+                            build artifacts.
                         </li>
-                        <li>Citations, like <cite>— Mark Otto</cite>, should use <code
-                                class="language-plaintext highlighter-rouge">&lt;cite&gt;</code>.</li>
-                        <li><del>Deleted</del> text should use <code
-                                class="language-plaintext highlighter-rouge">&lt;del&gt;</code> and <ins>inserted</ins>
-                            text should use <code class="language-plaintext highlighter-rouge">&lt;ins&gt;</code>.</li>
-                        <li>Superscript <sup>text</sup> uses <code
-                                class="language-plaintext highlighter-rouge">&lt;sup&gt;</code> and subscript
-                            <sub>text</sub> uses <code class="language-plaintext highlighter-rouge">&lt;sub&gt;</code>.
+                        <li><strong>Release</strong>: Deploy the software to end users.</li>
+                        <li><strong>Configure</strong>: Manage and configure the infrastructure required to support your
+                            applications.
+                        </li>
+                        <li><strong>Monitor</strong>: Track performance metrics and errors to help reduce the severity
+                            and frequency of
+                            incidents.</li>
+                        <li><strong>Secure</strong>: Check for vulnerabilities through static and dynamic tests, fuzz
+                            testing, and
+                            dependency scanning.</li>
+                        <li><strong>Govern</strong>: Manage security vulnerabilities, policies, and compliance across
+                            your organization.
                         </li>
                     </ul>
-                    <p>Most of these elements are styled by browsers with few modifications on our part.</p>
-                    <h2>Heading</h2>
-                    <p>This is some additional paragraph placeholder content. It has been written to fill the available
-                        space and show how a longer snippet of text affects the surrounding content. We'll repeat it
-                        often to keep the demonstration flowing, so be on the lookout for this exact same string of
-                        text.</p>
-                    <h3>Sub-heading</h3>
-                    <p>This is some additional paragraph placeholder content. It has been written to fill the available
-                        space and show how a longer snippet of text affects the surrounding content. We'll repeat it
-                        often to keep the demonstration flowing, so be on the lookout for this exact same string of
-                        text.</p>
-                    <pre><code>Example code block</code></pre>
-                    <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the
-                        other highly repetitive body text used throughout.</p>
-                </article>
-
-                <article class="blog-post">
-                    <h2 class="display-5 link-body-emphasis mb-1">Another blog post</h2>
-                    <p class="blog-post-meta">December 23, 2020 by <a href="#">Jacob</a></p>
-
-                    <p>This is some additional paragraph placeholder content. It has been written to fill the available
-                        space and show how a longer snippet of text affects the surrounding content. We'll repeat it
-                        often to keep the demonstration flowing, so be on the lookout for this exact same string of
-                        text.</p>
-                    <blockquote>
-                        <p>Longer quote goes here, maybe with some <strong>emphasized text</strong> in the middle of it.
-                        </p>
-                    </blockquote>
-                    <p>This is some additional paragraph placeholder content. It has been written to fill the available
-                        space and show how a longer snippet of text affects the surrounding content. We'll repeat it
-                        often to keep the demonstration flowing, so be on the lookout for this exact same string of
-                        text.</p>
-                    <h3>Example table</h3>
-                    <p>And don't forget about tables in these posts:</p>
+                    <h2>Benefits of DevOps</h2>
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Upvotes</th>
-                                <th>Downvotes</th>
+                                <th>Benefit</th>
+                                <th>Description</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Alice</td>
-                                <td>10</td>
-                                <td>11</td>
+                                <td><strong>Speed</strong></td>
+                                <td>
+                                    <p>Move at high velocity so you can innovate for customers faster, adapt to changing
+                                        markets better, and grow more efficient at driving business results. The DevOps
+                                        model
+                                        enables your developers and operations teams to achieve these results.
+                                        For example, microservices and continuous delivery let teams take ownership of
+                                        services
+                                        and then release updates to them quicker.</p>
+                                </td>
                             </tr>
                             <tr>
-                                <td>Bob</td>
-                                <td>4</td>
-                                <td>3</td>
+                                <td><strong>Rapid Delivery</strong></td>
+                                <td>
+                                    <p>Increase the frequency and pace of releases so you can innovate and improve your
+                                        product faster. The quicker you can release new features and fix bugs, the
+                                        faster you can respond to your customers’ needs and build competitive advantage.
+                                        Continuous integration and continuous delivery are practices that automate the
+                                        software release process, from build to deploy.</p>
+                                </td>
                             </tr>
                             <tr>
-                                <td>Charlie</td>
-                                <td>7</td>
-                                <td>9</td>
+                                <td><strong>Reliability</strong></td>
+                                <td>
+                                    <p>Ensure the quality of application updates and infrastructure changes so you can
+                                        reliably deliver at a more rapid pace while maintaining a positive experience
+                                        for end users. Use practices like continuous integration and continuous delivery
+                                        to test that each change is functional and safe. Monitoring and logging
+                                        practices help you stay informed of performance in real-time.</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Scale</strong></td>
+                                <td>
+                                    <p>Operate and manage your infrastructure and development processes at scale.
+                                        Automation and consistency help you manage complex or changing systems
+                                        efficiently and with reduced risk. For example, infrastructure as code helps you
+                                        manage your development, testing, and production environments in a repeatable
+                                        and more efficient manner.</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Improved Collaboration</strong></td>
+                                <td>
+                                    <p>Build more effective teams under a DevOps cultural model, which emphasizes values
+                                        such as ownership and accountability. Developers and operations teams
+                                        collaborate closely, share many responsibilities, and combine their workflows.
+                                        This reduces inefficiencies and saves time (e.g. reduced handover periods
+                                        between developers and operations, writing code that takes into account the
+                                        environment in which it is run).</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Security</strong></td>
+                                <td>
+                                    <p>Move quickly while retaining control and preserving compliance. You can adopt a
+                                        DevOps model without sacrificing security by using automated compliance
+                                        policies, fine-grained controls, and configuration management techniques. For
+                                        example, using infrastructure as code and policy as code, you can define and
+                                        then track compliance at scale.</p>
+                                </td>
                             </tr>
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <td>Totals</td>
-                                <td>21</td>
-                                <td>23</td>
-                            </tr>
-                        </tfoot>
                     </table>
-
-                    <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the
-                        other highly repetitive body text used throughout.</p>
-                </article>
-
-                <article class="blog-post">
-                    <h2 class="display-5 link-body-emphasis mb-1">New feature</h2>
-                    <p class="blog-post-meta">December 14, 2020 by <a href="#">Chris</a></p>
-
-                    <p>This is some additional paragraph placeholder content. It has been written to fill the available
-                        space and show how a longer snippet of text affects the surrounding content. We'll repeat it
-                        often to keep the demonstration flowing, so be on the lookout for this exact same string of
-                        text.</p>
+                    <h3>Benefits from AI and ML?</h3>
+                    <p>Artificial intelligence (AI) and machine learning (ML) are still maturing in their applications
+                        for DevOps, but there is plenty for organizations to take advantage of today. They assist in
+                        analyzing test data, identifying coding anomalies that could lead to bugs, as well as automating
+                        security and performance monitoring to detect and proactively mitigate potential issues.</p>
                     <ul>
-                        <li>First list item</li>
-                        <li>Second list item with a longer description</li>
-                        <li>Third list item to close it out</li>
+                        <li>AI and ML can find patterns, figure out the coding problems that cause bugs, and alert
+                            DevOps teams so they can dig deeper.</li>
+                        <li>Similarly, DevOps teams can use AI and ML to sift through security data from logs and other
+                            tools to detect breaches, attacks, and more. Once these issues are found, AI and ML can
+                            respond with automated mitigation techniques and alerting.</li>
+                        <li>AI and ML can save developers and operations professionals time by learning how they work
+                            best, making suggestions within workflows, and automatically provisioning preferred
+                            infrastructure configurations.</li>
                     </ul>
-                    <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the
-                        other highly repetitive body text used throughout.</p>
-                </article>
-
-                <nav class="blog-pagination" aria-label="Pagination">
-                    <a class="btn btn-outline-primary rounded-pill" href="#">Older</a>
-                    <a class="btn btn-outline-secondary rounded-pill disabled" aria-disabled="true">Newer</a>
-                </nav>
-
+                    <p>AI and ML excel in parsing vast amounts of test and security data, identifying patterns and
+                        coding anomalies that could lead to potential bugs or breaches. This capability enables DevOps
+                        teams to proactively address vulnerabilities and streamline alerting processes.</p>
+                    <h2>DevOps Practices</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Practice</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Continuous Integration</strong></td>
+                                <td>
+                                    <p>Continuous integration is a software development practice where developers
+                                        regularly merge their code changes into a central repository, after which
+                                        automated builds and tests are run. The key goals of continuous integration are
+                                        to find and address bugs quicker, improve software quality, and reduce the time
+                                        it takes to validate and release new software updates.</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Continuous Delivery</strong></td>
+                                <td>
+                                    <p>Continuous delivery is a software development practice where code changes are
+                                        automatically built, tested, and prepared for a release to production. It
+                                        expands upon continuous integration by deploying all code changes to a testing
+                                        environment and/or a production environment after the build stage. When
+                                        continuous delivery is implemented properly, developers will always have a
+                                        deployment-ready build artifact that has passed through a standardized test
+                                        process.</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Microservices</strong></td>
+                                <td>
+                                    <p>The microservices architecture is a design approach to build a single application
+                                        as a set of small services. Each service runs in its own process and
+                                        communicates with other services through a well-defined interface using a
+                                        lightweight mechanism, typically an HTTP-based application programming interface
+                                        (API). Microservices are built around business capabilities; each service is
+                                        scoped to a single purpose. You can use different frameworks or programming
+                                        languages to write microservices and deploy them independently, as a single
+                                        service, or as a group of services.</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Infrastructure as Code</strong></td>
+                                <td>
+                                    <p>Infrastructure as code is a practice in which infrastructure is provisioned and
+                                        managed using code and software development techniques, such as version control
+                                        and continuous integration. The cloud’s API-driven model enables developers and
+                                        system administrators to interact with infrastructure programmatically, and at
+                                        scale, instead of needing to manually set up and configure resources. Thus,
+                                        engineers can interface with infrastructure using code-based tools and treat
+                                        infrastructure in a manner similar to how they treat application code. Because
+                                        they are defined by code, infrastructure and servers can quickly be deployed
+                                        using standardized patterns, updated with the latest patches and versions, or
+                                        duplicated in repeatable ways.</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Monitoring and Logging</strong></td>
+                                <td>
+                                    <p>Organizations monitor metrics and logs to see how application and infrastructure
+                                        performance impacts the experience of their product’s end user. By capturing,
+                                        categorizing, and then analyzing data and logs generated by applications and
+                                        infrastructure, organizations understand how changes or updates impact users,
+                                        shedding insights into the root causes of problems or unexpected changes. Active
+                                        monitoring becomes increasingly important as services must be available 24/7 and
+                                        as application and infrastructure update frequency increases. Creating alerts or
+                                        performing real-time analysis of this data also helps organizations more
+                                        proactively monitor their services.</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Communication and Collaboration</strong></td>
+                                <td>
+                                    <p>Increased communication and collaboration in an organization is one of the key
+                                        cultural aspects of DevOps. The use of DevOps tooling and automation of the
+                                        software delivery process establishes collaboration by physically bringing
+                                        together the workflows and responsibilities of development and operations.
+                                        Building on top of that, these teams set strong cultural norms around
+                                        information sharing and facilitating communication through the use of chat
+                                        applications, issue or project tracking systems, and wikis. This helps speed up
+                                        communication across developers, operations, and even other teams like marketing
+                                        or sales, allowing all parts of the organization to align more closely on goals
+                                        and projects.</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3>Related topics</h3>
+                    <nav class="blog-pagination" aria-label="Pagination">
+                        <a class="btn btn-outline-primary rounded-pill"
+                            href="/pages/posts/continous-integration.html">Continuous Integration</a>
+                        <a class="btn btn-outline-primary rounded-pill"
+                            href="/pages/posts/continous-delivery.html">Continuous Delivery</a>
+                    </nav>
             </div>
 
             <div class="col-md-4">
@@ -281,13 +347,6 @@
                             <li><a href="#">January 2021</a></li>
                             <li><a href="#">December 2020</a></li>
                             <li><a href="#">November 2020</a></li>
-                            <li><a href="#">October 2020</a></li>
-                            <li><a href="#">September 2020</a></li>
-                            <li><a href="#">August 2020</a></li>
-                            <li><a href="#">July 2020</a></li>
-                            <li><a href="#">June 2020</a></li>
-                            <li><a href="#">May 2020</a></li>
-                            <li><a href="#">April 2020</a></li>
                         </ol>
                     </div>
 
